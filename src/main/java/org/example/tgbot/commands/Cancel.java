@@ -27,6 +27,7 @@ public class Cancel extends BotCommand {
 
         if (!botUser.isHasAccess()) {
             Util.sendMessage(chatId, "У тебя не доступа к боту.", false, telegramClient);
+            return;
         }
 
         if (botUser.getCurrentCommand() != null) {
