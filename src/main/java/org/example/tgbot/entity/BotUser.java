@@ -34,9 +34,6 @@ public class BotUser {
     @Column(name = "current_command")
     private String currentCommand;
 
-    @Column(name = "chat_id")
-    private long chatId;
-
     public void cancelCurrentCommand() {
         setCurrentCommand(null);
     }

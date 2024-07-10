@@ -44,7 +44,6 @@ public class Start extends BotCommand {
             currentUser.setHasAccess(false);
             currentUser.setSubscribed(false);
             currentUser.setGroupRepresentative(false);
-            currentUser.setChatId(chatId);
 
             botUserRepository.save(currentUser);
         }

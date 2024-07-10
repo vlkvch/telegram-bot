@@ -73,7 +73,7 @@ public class AddExam extends BotCommand {
                         @Override
                         public void run() {
                             String reminder = "Не забудь взять зачетку!";
-                            Util.sendMessage(student.getChatId(), reminder, false, telegramClient);
+                            Util.sendMessage(student.getId(), reminder, false, telegramClient);
                             cancel();
                         }
 
