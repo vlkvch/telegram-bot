@@ -27,6 +27,12 @@ public class Unsubscribe extends BotCommand {
 
         if (!botUser.isHasAccess()) {
             Util.sendMessage(chatId, "У тебя не доступа к боту.", false, telegramClient);
+            return;
+        }
+
+        if (botUser.isSubscribed() == false) {
+            Util.sendMessage(chatId, "Ты и так уже отписан от напоминаний.", false, telegramClient);
+            return;
         }
 
         botUser.setSubscribed(false);

@@ -27,6 +27,12 @@ public class Subscribe extends BotCommand {
 
         if (!botUser.isHasAccess()) {
             Util.sendMessage(chatId, "У тебя не доступа к боту.", false, telegramClient);
+            return;
+        }
+
+        if (botUser.isSubscribed()) {
+            Util.sendMessage(chatId, "Ты и так уже подписан на напоминания.", false, telegramClient);
+            return;
         }
 
         botUser.setSubscribed(true);
