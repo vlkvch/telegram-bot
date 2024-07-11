@@ -2,9 +2,9 @@ package org.example.tgbot.commands;
 
 import java.util.Optional;
 
-import org.example.tgbot.Util;
 import org.example.tgbot.entity.BotUser;
 import org.example.tgbot.repository.BotUserRepository;
+import org.example.tgbot.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.User;
@@ -37,9 +37,9 @@ public class SetBotCreator extends BotCommand {
 
             botUserRepository.save(currentUser);
 
-            Util.sendMessage(chatId, "Теперь ты создатель бота.", false, telegramClient);
+            Util.sendMessage(chatId, "Теперь ты создатель бота.", telegramClient);
         } else {
-            Util.sendMessage(chatId, "Создатель бота уже добавлен.", false, telegramClient);
+            Util.sendMessage(chatId, "Создатель бота уже добавлен.", telegramClient);
         }
     }
 

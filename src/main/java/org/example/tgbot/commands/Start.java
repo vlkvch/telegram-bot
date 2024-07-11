@@ -2,9 +2,9 @@ package org.example.tgbot.commands;
 
 import java.util.Optional;
 
-import org.example.tgbot.Util;
 import org.example.tgbot.entity.BotUser;
 import org.example.tgbot.repository.BotUserRepository;
+import org.example.tgbot.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.User;
@@ -32,10 +32,10 @@ public class Start extends BotCommand {
             BotUser currentUser = botUser.get();
 
             if (currentUser.isHasAccess()) {
-                Util.sendMessage(chatId, "Привет!", false, telegramClient);
+                Util.sendMessage(chatId, "Привет!", telegramClient);
                 Util.sendMessage(chatId, "_Сообщение с доступными командами._", true, telegramClient);
             } else {
-                Util.sendMessage(chatId, "У тебя нет доступа.", false, telegramClient);
+                Util.sendMessage(chatId, "У тебя нет доступа.", telegramClient);
             }
         } else {
             BotUser currentUser = new BotUser();

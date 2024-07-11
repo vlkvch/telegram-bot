@@ -1,18 +1,15 @@
 package org.example.tgbot.commands;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeParseException;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.example.tgbot.Util;
 import org.example.tgbot.entity.BotUser;
 import org.example.tgbot.entity.Exam;
 import org.example.tgbot.repository.BotUserRepository;
 import org.example.tgbot.repository.ExamRepository;
+import org.example.tgbot.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.User;
@@ -43,7 +40,7 @@ public class AddExam extends BotCommand {
         BotUser botUser = botUserRepository.findById(user.getId()).get();
 
         if (!botUser.isBotCreator() && !botUser.isGroupRepresentative()) {
-            Util.sendMessage(chatId, "Ты не можешь добавить экзамен.", false, telegramClient);
+            Util.sendMessage(chatId, "Ты не можешь добавить экзамен.", telegramClient);
             return;
         }
 
@@ -73,7 +70,7 @@ public class AddExam extends BotCommand {
                         @Override
                         public void run() {
                             String reminder = "Не забудь взять зачетку!";
-                            Util.sendMessage(student.getId(), reminder, false, telegramClient);
+                            Util.sendMessage(student.getId(), reminder, telegramClient);
                             cancel();
                         }
 
@@ -81,7 +78,7 @@ public class AddExam extends BotCommand {
                 }
             }
 
-            Util.sendMessage(chatId, "Дата добавлена!", false, telegramClient);
+            Util.sendMessage(chatId, "Дата добавлена!", telegramClient);
         } else {
             String wrongNumberOfArgsMessage = String.format(
                 "_%s_.\n\nПример использования:\n```\n%s%s %s %s\n```",

@@ -1,9 +1,9 @@
 package org.example.tgbot.commands;
 
-import org.example.tgbot.Util;
 import org.example.tgbot.commands.interfaces.IUserShared;
 import org.example.tgbot.entity.BotUser;
 import org.example.tgbot.repository.BotUserRepository;
+import org.example.tgbot.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -35,7 +35,7 @@ public class SetGroupRepresentative extends BotCommand implements IUserShared {
         BotUser botUser = botUserRepository.findById(userId).get();
 
         if (!botUser.isBotCreator() && !botUser.isGroupRepresentative()) {
-            Util.sendMessage(chatId, "Ты не можешь добавить старосту.", false, telegramClient);
+            Util.sendMessage(chatId, "Ты не можешь добавить старосту.", telegramClient);
             return;
         }
 
@@ -80,7 +80,7 @@ public class SetGroupRepresentative extends BotCommand implements IUserShared {
 
         botUserRepository.save(groupRepresentative);
 
-        Util.sendMessage(chat.getId(), "Староста добавлен(-а).", false, telegramClient);
+        Util.sendMessage(chat.getId(), "Староста добавлен(-а).", telegramClient);
     }
 
 }

@@ -1,8 +1,8 @@
 package org.example.tgbot.commands;
 
-import org.example.tgbot.Util;
 import org.example.tgbot.entity.BotUser;
 import org.example.tgbot.repository.BotUserRepository;
+import org.example.tgbot.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.User;
@@ -26,7 +26,7 @@ public class Cancel extends BotCommand {
         BotUser botUser = botUserRepository.findById(user.getId()).get();
 
         if (!botUser.isHasAccess()) {
-            Util.sendMessage(chatId, "У тебя не доступа к боту.", false, telegramClient);
+            Util.sendMessage(chatId, "У тебя не доступа к боту.", telegramClient);
             return;
         }
 
@@ -34,7 +34,7 @@ public class Cancel extends BotCommand {
             botUser.cancelCurrentCommand();
             botUserRepository.save(botUser);
 
-            Util.sendMessage(chatId, "Текущая команда отменена.", false, telegramClient);
+            Util.sendMessage(chatId, "Текущая команда отменена.", telegramClient);
         }
     }
 }
