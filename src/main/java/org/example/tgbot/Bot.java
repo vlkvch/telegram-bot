@@ -18,6 +18,7 @@ import org.example.tgbot.config.ApplicationConfig;
 import org.example.tgbot.entity.BotUser;
 import org.example.tgbot.repository.BotUserRepository;
 import org.example.tgbot.repository.ExamRepository;
+import org.example.tgbot.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;
@@ -45,7 +46,7 @@ public class Bot extends CommandLongPollingTelegramBot implements SpringLongPoll
         timer = new Timer();
 
         registerDefaultAction((telegramClient, message) -> {
-            Util.sendMessage(message.getChatId(), "Такой команды нет.", false, telegramClient);
+            Util.sendMessage(message.getChatId(), "Такой команды нет.", telegramClient);
         });
 
         register(new AddExam(botUserRepository, examRepository, timer));
@@ -86,7 +87,7 @@ public class Bot extends CommandLongPollingTelegramBot implements SpringLongPoll
                 return;
             }
 
-            Util.sendMessage(chatId, "Попробуй использовать какую-нибудь команду", false, telegramClient);
+            Util.sendMessage(chatId, "Попробуй использовать какую-нибудь команду", telegramClient);
         }
     }
 
