@@ -18,15 +18,14 @@ public class Util {
         }
     }
 
-    public static void sendMessage(long chatId, String message, TelegramClient telegramClient) {
-        SendMessage msg = stringToSendMessage(chatId, message);
-        sendMessage(msg, telegramClient);
-    }
-
     public static void sendMessage(long chatId, String message, boolean markdownEnabled, TelegramClient telegramClient) {
         SendMessage msg = stringToSendMessage(chatId, message);
         msg.enableMarkdown(markdownEnabled);
         sendMessage(msg, telegramClient);
+    }
+
+    public static void sendMessage(long chatId, String message, TelegramClient telegramClient) {
+        sendMessage(chatId, message, false, telegramClient);
     }
 
 }
