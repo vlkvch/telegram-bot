@@ -25,7 +25,7 @@ public class Unsubscribe extends BotCommand {
 
         BotUser botUser = botUserRepository.findById(user.getId()).get();
 
-        if (!botUser.isHasAccess()) {
+        if (!botUser.hasAccess()) {
             Util.sendMessage(chatId, "У тебя не доступа к боту.", telegramClient);
             return;
         }

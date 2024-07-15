@@ -30,7 +30,7 @@ public class SetBotCreator extends BotCommand {
         if (botCreator.isEmpty()) {
             BotUser currentUser = botUserRepository.findById(user.getId()).get();
 
-            currentUser.setHasAccess(true);
+            currentUser.hasAccess(true);
             currentUser.setSubscribed(true);
             currentUser.setGroupRepresentative(false);
             currentUser.setBotCreator(true);

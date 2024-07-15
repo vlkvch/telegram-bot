@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 @Entity
 @NoArgsConstructor
@@ -19,6 +20,7 @@ public class BotUser {
     @Column(name = "user_id", unique = true)
     private long id;
 
+    @Accessors(fluent = true)
     @Column(name = "has_access")
     private boolean hasAccess;
 

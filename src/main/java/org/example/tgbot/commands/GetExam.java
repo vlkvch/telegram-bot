@@ -37,7 +37,7 @@ public class GetExam extends BotCommand {
 
         BotUser botUser = botUserRepository.findById(user.getId()).get();
 
-        if (!botUser.isHasAccess()) {
+        if (!botUser.hasAccess()) {
             Util.sendMessage(chatId, "У тебя нет доступа к боту.", telegramClient);
             return;
         }

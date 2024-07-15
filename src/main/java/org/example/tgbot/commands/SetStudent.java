@@ -79,7 +79,7 @@ public class SetStudent extends BotCommand implements IUserShared {
         BotUser student = new BotUser();
 
         student.setId(sharedUser.getUserId());
-        student.setHasAccess(true);
+        student.hasAccess(true);
         student.setSubscribed(true);
         student.setGroupRepresentative(false);
 

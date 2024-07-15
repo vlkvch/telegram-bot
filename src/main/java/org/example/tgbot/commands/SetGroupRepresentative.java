@@ -74,7 +74,7 @@ public class SetGroupRepresentative extends BotCommand implements IUserShared {
         BotUser groupRepresentative = new BotUser();
 
         groupRepresentative.setId(sharedUser.getUserId());
-        groupRepresentative.setHasAccess(true);
+        groupRepresentative.hasAccess(true);
         groupRepresentative.setSubscribed(true);
         groupRepresentative.setGroupRepresentative(true);
 

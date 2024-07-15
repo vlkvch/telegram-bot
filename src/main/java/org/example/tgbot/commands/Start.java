@@ -31,7 +31,7 @@ public class Start extends BotCommand {
         if (botUser.isPresent()) {
             BotUser currentUser = botUser.get();
 
-            if (currentUser.isHasAccess()) {
+            if (currentUser.hasAccess()) {
                 Util.sendMessage(chatId, "Привет!", telegramClient);
                 Util.sendMessage(chatId, "_Сообщение с доступными командами._", true, telegramClient);
             } else {
@@ -41,7 +41,7 @@ public class Start extends BotCommand {
             BotUser currentUser = new BotUser();
 
             currentUser.setId(userId);
-            currentUser.setHasAccess(false);
+            currentUser.hasAccess(false);
             currentUser.setSubscribed(false);
             currentUser.setGroupRepresentative(false);
 
